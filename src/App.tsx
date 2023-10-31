@@ -1,11 +1,21 @@
-import { Button } from "./components/ui/button";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+
+import Dashboard from "./components/Dashboard/Dashboard";
+import Map from "./components/Map/Map";
+
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
-    <div>
-      <h1>App</h1>
-      <Button>Click me</Button>
-    </div>
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/map" element={<Map />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 };
 
