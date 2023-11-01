@@ -1,4 +1,5 @@
 import CardContainer from "./Cards/CardContainer";
+import Forecast from "./Forecast";
 
 const chemicals: {
   title: string;
@@ -38,6 +39,7 @@ const Dashboard = () => {
           Today’s weather highlights:
         </h1>
         <CardContainer />
+        <Forecast />
       </div>
 
       {/* the right side of the dashbouard that displays air polution */}
@@ -54,14 +56,25 @@ const Dashboard = () => {
 
         {/* all the chemicals that add up to create the air polution index */}
         <div className="grid grid-cols-4 gap-5 mt-20">
-          {chemicals.map((item, index) => (
+          {chemicals.slice(0, 4).map((item, index) => (
             <div key={index} className="text-center">
-              <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+              <h3 className="text-2xl font-semibold tracking-tight">
                 {item.title}
               </h3>
               <p className="leading-7">{item.amount} µg/m³</p>
             </div>
           ))}
+
+          <div className="col-span-4 sm:col-span-4 flex justify-center">
+            {chemicals.slice(4).map((item, index) => (
+              <div key={index} className="text-center m-2">
+                <h3 className="text-2xl font-semibold tracking-tight">
+                  {item.title}
+                </h3>
+                <p className="leading-7">{item.amount} µg/m³</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
