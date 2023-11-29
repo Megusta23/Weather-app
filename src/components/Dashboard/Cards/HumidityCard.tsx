@@ -1,6 +1,11 @@
+import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const HumidityCard = () => {
+interface HumidityProps {
+  humidity: number;
+}
+
+const HumidityCard: React.FC<HumidityProps> = ({ humidity }) => {
   return (
     <Card>
       <CardHeader>
@@ -9,7 +14,7 @@ const HumidityCard = () => {
       <CardContent className="text-center">
         <div className="my-5 flex items-center justify-center">
           <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-            79
+            {humidity}
           </h1>
           <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl ml-2">
             %

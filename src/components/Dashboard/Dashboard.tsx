@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import CardContainer from "./Cards/CardContainer";
 import Forecast from "./Forecast";
+import axios from "../../utils/axios";
 
 const chemicals: {
   title: string;

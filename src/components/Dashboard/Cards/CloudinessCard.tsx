@@ -1,6 +1,11 @@
+import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const CloudinessCard = () => {
+interface CloudinessProps {
+  cloudiness: number;
+}
+
+const CloudinessCard: React.FC<CloudinessProps> = ({ cloudiness }) => {
   return (
     <Card>
       <CardHeader>
@@ -8,7 +13,7 @@ const CloudinessCard = () => {
       </CardHeader>
       <CardContent className="text-center">
         <div className="my-5 flex items-center justify-center">
-          <img src="" alt="Icon" />
+          {cloudiness}
         </div>
       </CardContent>
     </Card>

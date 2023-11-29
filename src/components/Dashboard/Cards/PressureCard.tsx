@@ -1,6 +1,11 @@
+import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const PressureCard = () => {
+interface PressureProps {
+  pressure: number;
+}
+
+const PressureCard: React.FC<PressureProps> = ({ pressure }) => {
   return (
     <Card>
       <CardHeader>
@@ -9,7 +14,7 @@ const PressureCard = () => {
       <CardContent className="text-center">
         <div className="my-5 flex items-center justify-center">
           <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-            1032.76
+            {pressure}
           </h1>
         </div>
         <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
