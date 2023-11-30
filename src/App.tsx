@@ -1,5 +1,7 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
+//configuring the dotEnv to secure the API key
+
 import Dashboard from "./components/Dashboard/Dashboard";
 import Map from "./components/Map/Map";
 

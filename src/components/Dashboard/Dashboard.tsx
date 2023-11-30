@@ -3,37 +3,39 @@ import CardContainer from "./Cards/CardContainer";
 import Forecast from "./Forecast";
 import axios from "../../utils/axios";
 
-const chemicals: {
-  title: string;
-  amount: number;
-}[] = [
-  {
-    title: "SO2",
-    amount: 19,
-  },
-  {
-    title: "NO2",
-    amount: 22,
-  },
-  {
-    title: "PM10",
-    amount: 12,
-  },
-  {
-    title: "PM2.5",
-    amount: 9,
-  },
-  {
-    title: "O3",
-    amount: 59,
-  },
-  {
-    title: "CO",
-    amount: 3200,
-  },
-];
-
 const Dashboard = () => {
+  const [polutionData, setPolutionData] = useState({
+    co: 0,
+    no: 0,
+    no2: 0,
+    o3: 0,
+    so2: 0,
+    pm2_5: 0,
+    pm10: 0,
+    nh3: 0,
+  });
+
+  useEffect(() => {
+    axios
+      .get(`air_pollution?lat=50&lon=50&appid=1a154aba2aa00fda1867370bf176965d`)
+      .then((response) => {
+        const data = response.data.list[0].components;
+        setPolutionData(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const pollutionComponents = Object.entries(polutionData).map(
+    ([name, value]) => (
+      <div key={name} className="text-center">
+        <h3 className="text-2xl font-semibold tracking-tight">{name}</h3>
+        <p className="leading-7">{value} µg/m³</p>
+      </div>
+    )
+  );
+
   return (
     <div className="p-10 flex flex-row bg-slate-100">
       <div className="mr-10 basis-3/5">
@@ -44,7 +46,7 @@ const Dashboard = () => {
         <Forecast />
       </div>
 
-      {/* the right side of the dashbouard that displays air polution */}
+      {/* The right side of the dashboard that displays air pollution */}
       <div className="basis-2/5 bg-lime-400 rounded-xl flex flex-col items-center justify-center">
         {/* The main text that displays the air quality index */}
         <div className="text-center">
@@ -56,27 +58,9 @@ const Dashboard = () => {
           </h1>
         </div>
 
-        {/* all the chemicals that add up to create the air polution index */}
+        {/* All the chemicals that add up to create the air pollution index */}
         <div className="grid grid-cols-4 gap-5 mt-20">
-          {chemicals.slice(0, 4).map((item, index) => (
-            <div key={index} className="text-center">
-              <h3 className="text-2xl font-semibold tracking-tight">
-                {item.title}
-              </h3>
-              <p className="leading-7">{item.amount} µg/m³</p>
-            </div>
-          ))}
-
-          <div className="col-span-4 sm:col-span-4 flex justify-center">
-            {chemicals.slice(4).map((item, index) => (
-              <div key={index} className="text-center m-2">
-                <h3 className="text-2xl font-semibold tracking-tight">
-                  {item.title}
-                </h3>
-                <p className="leading-7">{item.amount} µg/m³</p>
-              </div>
-            ))}
-          </div>
+          {pollutionComponents}
         </div>
       </div>
     </div>
