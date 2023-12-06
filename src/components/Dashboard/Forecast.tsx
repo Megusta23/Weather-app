@@ -1,4 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const forecast: {
   title: string;
@@ -27,6 +29,26 @@ const forecast: {
 ];
 
 const Forecast = () => {
+  const [forecastData, setForcastData] = useState({
+    temperature: 0,
+  });
+
+  useEffect(() => {
+    axios
+      .get(`forecast?lat=44.34&lon=10.99&appid=1`)
+      .then((response) => {
+        const data = response.data.list;
+        console.log(data);
+
+        setForcastData({
+          temperature: 0,
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   return (
     <div className="grid gap-5 grid-cols-5 mt-10">
       {forecast.map((item, index) => (
