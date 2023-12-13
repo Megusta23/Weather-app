@@ -29,19 +29,20 @@ const forecast: {
 ];
 
 const Forecast = () => {
-  const [forecastData, setForcastData] = useState({
-    temperature: 0,
+  const [forecastData, setForecastData] = useState({
+    forecast: 0,
   });
 
   useEffect(() => {
     axios
-      .get(`forecast?lat=44.34&lon=10.99&appid=1`)
+      .get(
+        `forecast?lat=44.34&lon=10.99&appid=1a154aba2aa00fda1867370bf176965d`
+      )
       .then((response) => {
         const data = response.data.list;
-        console.log(data);
 
-        setForcastData({
-          temperature: 0,
+        setForecastData({
+          forecast: data,
         });
       })
       .catch((error) => {

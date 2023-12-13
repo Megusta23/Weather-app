@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface HumidityProps {
   humidity: number;
+  numToString: string;
 }
 
-const HumidityCard: React.FC<HumidityProps> = ({ humidity }) => {
+const HumidityCard: React.FC<HumidityProps> = ({ humidity, numToString }) => {
+  const [humidityIndex, setHumidityIndex] = useState(numToString);
+
+  useEffect(() => {
+    switch (true) {
+      case humidity >= 85:
+        // Too high and uncomfortable
+        setHumidityIndex("Uncomfortable");
+        break;
+      case humidity >= 68:
+        // Acceptable but slightly muggy
+        setHumidityIndex("Acceptable");
+        break;
+      case humidity == 43:
+        // Ideal Humidity
+        setHumidityIndex("Ideal");
+        break;
+      case humidity <= 25:
+        //Acceptable but slightly muggy
+        setHumidityIndex("Potentially harmful");
+        break;
+    }
+  }, [humidity]);
+
   return (
     <Card>
       <CardHeader>
@@ -21,7 +45,7 @@ const HumidityCard: React.FC<HumidityProps> = ({ humidity }) => {
           </h1>
         </div>
         <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight mb-5">
-          Normal
+          {humidityIndex}
         </h3>
       </CardContent>
     </Card>
