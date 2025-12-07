@@ -1,27 +1,66 @@
-# React + TypeScript + Vite
+# Everyday Weather
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Why I built this
 
-Currently, two official plugins are available:
+I built this project as a learning exercise to explore React, TypeScript, and working with external APIs. The goal was to practice fetching and displaying real-time weather data, rendering forecasts, and integrating mapping tools all as a hands-on learning project to strengthen my full-stack development skills.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies used
 
-## Expanding the ESLint configuration
+- **React** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **Tailwind CSS** - Styling
+- **Axios** - HTTP client for API requests
+- **OpenWeatherMap API** - Real-time weather data and forecasts
+- **React Leaflet** - Interactive map visualization
+- **React Router** - Client-side routing
+- **Vercel** - Deployment platform
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Live demo
 
-- Configure the top-level `parserOptions` property like this:
+🌐 [Everyday Weather App](https://weather-app-mu-ten-63.vercel.app/)
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+## Features
+
+- Current weather display with temperature and conditions
+- 5-day weather forecast with dynamic icons
+- Interactive map showing weather markers for multiple cities
+- Search functionality to look up weather by city/region
+- Responsive design with Tailwind CSS
+- Real-time data from OpenWeatherMap API
+
+## Quick start
+
+```bash
+# Install dependencies
+npm install
+
+# Run dev server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Environment variables
+
+Create a `.env` file in the root directory:
+
+```
+VITE_OPENWEATHER_API_KEY=your_api_key_here
+```
+
+Get your free API key from [OpenWeatherMap](https://openweathermap.org/api).
+
+## Notes
+
+- This is a learning project built with Vite + React
+- Weather data is fetched in real-time from the OpenWeatherMap API
+- Deploy to Vercel by connecting your GitHub repository
+
+## License
+
+MIT
