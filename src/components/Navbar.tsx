@@ -11,9 +11,7 @@ const Navbar = () => {
 
   const handleSearch = () => {
     if (location.trim()) {
-      // You can pass this to parent component or API call here
       console.log("Searching for:", location);
-      // Example: window.location.href = `/?location=${location}`;
     }
   };
 
@@ -27,7 +25,7 @@ const Navbar = () => {
 
   return (
     <nav className="flex justify-between items-center bg-slate-900 px-10 py-4">
-      <p className="scroll-m-20 text-xl font-semibold tracking-tight text-white">
+      <p className="scroll-m-20 text-xl font-semibold tracking-tight text-white ">
         Everyday Weather
       </p>
       <div className="flex items-center gap-8">

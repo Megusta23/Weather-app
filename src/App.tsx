@@ -13,7 +13,10 @@ const App = () => {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route
+            path="/"
+            element={<Dashboard backgroundColor={""} NumToString={""} />}
+          />
           <Route path="/map" element={<Map />} />
         </Routes>
       </BrowserRouter>

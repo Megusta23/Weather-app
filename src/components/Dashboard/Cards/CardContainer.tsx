@@ -51,7 +51,7 @@ const CardContainer = () => {
       <TemperatureCard temperature={currentTemperature} />
       <PressureCard pressure={currentPressure} />
       <WindCard windSpeed={currentWindSpeed} />
-      <HumidityCard humidity={currentHumidity} />
+      <HumidityCard humidity={currentHumidity} numToString={""} />
       <PrecipitationCard />
       <CloudinessCard cloudiness={currentCloudiness} />
     </div>
