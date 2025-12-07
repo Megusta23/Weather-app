@@ -31,7 +31,9 @@ const Dashboard: React.FC<Props> = ({ backgroundColor, NumToString }) => {
 
   useEffect(() => {
     axios
-      .get(`air_pollution?lat=50&lon=50&appid=1a154aba2aa00fda1867370bf176965d`)
+      .get(
+        `air_pollution?lat=43.343033&lon=17.807894&appid=1a154aba2aa00fda1867370bf176965d`
+      )
       .then((response) => {
         const data = response.data.list[0].components;
         const airIndex = response.data.list[0].main.aqi;
